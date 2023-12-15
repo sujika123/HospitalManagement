@@ -1,0 +1,47 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="card">
+    <div class="header bg-red">
+
+        <h2 class="text-center">
+            ADD DEPARTMENT
+        </h2>
+
+    </div>
+    <div class="body">
+
+        <form method="post" class="text-center" style="width:950px;margin-left:85px;">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br><br>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<div class="card">-->
+<!--<h1 class="text-center" style="font-family: 'Alkatra', cursive;">Add Departments</h1><br><br>-->
+<!--<form method="post" class="text-center" style="width:950px;margin-left:100px;">-->
+<!--    {% csrf_token %}-->
+<!--    {{form|crispy}}-->
+<!--    <br>-->
+<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--    <br><br>-->
+
+<!--</form>-->
+<!--</div>-->
+
+
+{% endblock %}

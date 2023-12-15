@@ -1,0 +1,44 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block title %}View Departments{% endblock title %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    AVAILABLE SCHEDULES
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>DOCTOR NAME</th>
+                        <th>DATE</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
+                        <th>DELETE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                   <tr>
+                   <th scope="row">{{forloop.counter}}</th>
+                   <td>{{i.Doc_name}}</td>
+                   <td>{{i.Date}}</td>
+                   <td>{{i.Start_time}}</td>
+                   <td>{{i.End_time}}</td>
+                   <td><a href="{% url 'delete_schedule' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
+                   </tr>
+                   {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

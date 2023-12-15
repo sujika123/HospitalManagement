@@ -1,0 +1,156 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block title %}View Departments{% endblock title %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    OUR DEPARTMENTS
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>DEPARTMENT NAME</th>
+                        <th>DESCRIPTION</th>
+                        <th>UPDATE</th>
+                        <th>DELETE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{i.dept_name}}</td>
+                        <td>{{i.dept_desc}}</td>
+                        <td><a href="{% url 'updatedep' i.id %}"> <button type="button" class="btn btn-primary">UPDATE</button></a></td>
+                        <td><a href="{% url 'deletedep' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--<div class="card">-->
+<!--<h1 class="text-center" style="font-family: 'Alkatra', cursive;">Our Departments</h1><br>-->
+<!--<div class="row justify-content-center ">-->
+<!--    <div class="col-auto">-->
+<!--        <table class="table table-info table-responsive" style="margin-left:20px;margin-right:20px;">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th>SL.No</th>-->
+<!--              <th scope="col-3">DEPARTMENT NAME</th>-->
+<!--              <th scope="col-5">DESCRIPTION</th>-->
+<!--              <th scope="col-3">DELETE</th>-->
+
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          {%  for i in data %}-->
+<!--            <tr>-->
+<!--              <th scope="row">{{forloop.counter}}</th>-->
+<!--              <td>{{i.dept_name}}</td>-->
+<!--              <td>{{i.dept_desc}}</td>-->
+<!--              <td><a href="{% url 'deletedep' i.id %}"> <button type="button" class="btn btn-primary">DELETE</button></a></td>-->
+<!--            </tr>-->
+<!--          {% endfor %}-->
+
+<!--          </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+
+
+
+
+<!--<div class="row clearfix">-->
+<!--                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+<!--                    <div class="card">-->
+<!--                        <div class="header">-->
+<!--                            <h2 class="text-center">-->
+<!--                                OUR DEPARTMENTS-->
+<!--                                <small>Use <code>.table-striped</code> to add zebra-striping to any table row within the <code>&lt;tbody&gt;</code></small>-->
+<!--                            </h2>-->
+<!--                            <ul class="header-dropdown m-r&#45;&#45;5">-->
+<!--                                <li class="dropdown">-->
+<!--                                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
+<!--                                        <i class="material-icons">more_vert</i>-->
+<!--                                    </a>-->
+<!--                                    <ul class="dropdown-menu pull-right">-->
+<!--                                        <li><a href="javascript:void(0);">Action</a></li>-->
+<!--                                        <li><a href="javascript:void(0);">Another action</a></li>-->
+<!--                                        <li><a href="javascript:void(0);">Something else here</a></li>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+<!--                        <div class="body table-responsive">-->
+<!--                            <table class="table table-striped">-->
+<!--                                <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th>SL.No</th>-->
+<!--                                        <th>DEPARTMENT NAME</th>-->
+<!--                                        <th>DESCRIPTION</th>-->
+<!--                                        <th>DELETE</th>-->
+<!--                                    </tr>-->
+<!--                                </thead>-->
+<!--                                <tbody>-->
+<!--                                 {%  for i in data %}-->
+<!--                                    <tr>-->
+<!--                                        <th scope="row">{{forloop.counter}}</th>-->
+<!--                                        <td>{{i.dept_name}}</td>-->
+<!--                                        <td>{{i.dept_desc}}</td>-->
+<!--                                        <td><a href="{% url 'deletedep' i.id %}"> <button type="button" class="btn btn-primary">DELETE</button></a></td>-->
+<!--                                    </tr>-->
+<!--&lt;!&ndash;                                    <tr>&ndash;&gt;-->
+<!--                                        <th scope="row">2</th>-->
+<!--                                        <td>Jacob</td>-->
+<!--                                        <td>Thornton</td>-->
+<!--                                        <td>@fat</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="row">3</th>-->
+<!--                                        <td>Larry</td>-->
+<!--                                        <td>the Bird</td>-->
+<!--                                        <td>@twitter</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="row">4</th>-->
+<!--                                        <td>Larry</td>-->
+<!--                                        <td>Jellybean</td>-->
+<!--                                        <td>@lajelly</td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="row">5</th>-->
+<!--                                        <td>Larry</td>-->
+<!--                                        <td>Kikat</td>-->
+<!--                                        <td>@lakitkat</td>-->
+<!--                                    </tr>-->
+<!--                                 {% endfor %}-->
+<!--                                </tbody>-->
+<!--                            </table>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+
+{% endblock %}

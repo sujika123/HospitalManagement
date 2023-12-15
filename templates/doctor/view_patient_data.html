@@ -1,0 +1,43 @@
+{% extends 'doctor/dash.html' %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    PATIENTS DATA
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>PATIENT NAME</th>
+                        <th>TITLE</th>
+                        <th>DATA</th>
+                        <th>DOWNLOAD</th>
+                        <th>DELETE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{i.user}}</td>
+                        <td>{{i.Title}}</td>
+                         <td><img src = "{{i.Patient_data.url}}" alt="img" width="104" height="142" ></td>
+                        <td><a href="{{i.Patient_data.url}}"Download>{{i.Patient_data}}</a></td>
+                        <td><a href="{% url 'delete_patient_data' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

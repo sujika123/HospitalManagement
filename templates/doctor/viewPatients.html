@@ -1,0 +1,39 @@
+{% extends 'doctor/dash.html' %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    PATIENTS LIST
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.No</th>
+                        <th>PATIENT NAME</th>
+                        <th>AADHAR NO.</th>
+                        <th>EMAIL</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{i.name}}</td>
+                        <td>{{i.aadhar_number}}</td>
+                        <td>{{i.email}}</td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

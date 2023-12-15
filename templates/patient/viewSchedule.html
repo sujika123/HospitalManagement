@@ -1,0 +1,54 @@
+{% extends 'patient/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    AVAILABLE SCHEDULES
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>DOCTOR NAME</th>
+                        <th>DATE</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
+                        <th>APPOINTMENT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                   <tr>
+                   <th scope="row">{{forloop.counter}}</th>
+                   <td>{{i.Doc_name}}</td>
+                   <td>{{i.Date}}</td>
+                   <td>{{i.Start_time}}</td>
+                   <td>{{i.End_time}}</td>
+                   <td><a href="{% url 'book_apppointment' i.id %}"> <button type="button" class="btn btn-primary">Book Appointment</button></a></td>
+                   </tr>
+                   {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="background-color:green">
+{% for message in messages %}
+<div class="alert alert-primary" role="alert">
+  {{message}}
+</div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

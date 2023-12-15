@@ -1,0 +1,121 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    DOCTOR APPROVAL REQUESTS
+                </h2>
+            </div>
+
+<!--            {% for message in messages %}-->
+<!--           <div class="alert alert-primary" role="alert">-->
+<!--           {{message}}-->
+<!--           </div>-->
+<!--           {% endfor %}-->
+
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.No</th>
+                        <th>DOCTORS NAME</th>
+                        <th>PHOTO</th>
+                        <th>DEPARTMENT</th>
+                        <th>EMAIL</th>
+                        <th>ACTION</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>Dr. {{i.name}}</td>
+                        <td><img src="{{ i.Image.url }}" class="img-responsive rounded-circle" style="width:100px;height:100px; float: left; margin-right: 10px;" /></td>
+                        <td>{{i.department}}</td>
+                        <td>{{i.email}}</td>
+                         <td>
+                {% if i.status == 0 %}
+                <a href="{% url 'approve_doctor' i.user_id %}" type="button" class="btn btn-primary">Approve</a>
+                <form action="{% url 'reject_doctor' i.user_id %}" method="post" style="display:inline;" onsubmit="window.mytest()">
+                  {% csrf_token %}
+                  <input type="hidden" value="{{i.id}}" />
+                  <button class="btn btn-danger">Reject</button>
+                </form>
+                {% elif i.status == 1 %}
+                <button type="button" class="btn btn-success">Approval Confirmed</button>
+                {% else %}
+                <button type="button" class="btn btn-danger">Approval rejected</button>
+                {% endif %}
+              </td>
+
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<div class="card">-->
+<!--<h1 class="text-center" style="font-family: 'Alkatra', cursive;">Doctor Approval Requests</h1><br>-->
+<!--{% for message in messages %}-->
+<!--<div class="alert alert-primary" role="alert">-->
+<!--  {{message}}-->
+<!--</div>-->
+<!--{% endfor %}-->
+<!--<div class="row justify-content-center">-->
+<!--    <div class="col-auto">-->
+<!--        <table class="table table-info table-responsive" style="margin-left:20px;">-->
+<!--          <thead>-->
+<!--            <tr>-->
+<!--              <th scope="col">SL.No</th>-->
+<!--              <th scope="col">DOCTORS NAME</th>-->
+<!--              <th scope="col">IMAGE</th>-->
+<!--              <th scope="col">DEPARTMENT</th>-->
+<!--              <th scope="col">EMAIL</th>-->
+<!--              <th scope="col">ACTION</th>-->
+
+<!--            </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          {%  for i in data %}-->
+<!--            <tr>-->
+<!--              <th scope="row">{{forloop.counter}}</th>-->
+<!--              <td>{{i.name}}</td>-->
+<!--              <td><img src="{{ i.Image.url }}" class="img-responsive rounded-circle" style="width:100px;height:100px; float: left; margin-right: 10px;" /></td>-->
+<!--              <td>{{i.department}}</td>-->
+<!--              <td>{{i.email}}</td>-->
+<!--              <td>-->
+<!--                {% if i.status == 0 %}-->
+<!--                <a href="{% url 'approve_doctor' i.user_id %}" type="button" class="btn btn-primary">Approve</a>-->
+<!--                <form action="{% url 'reject_doctor' i.user_id %}" method="post" style="display:inline;" onsubmit="window.mytest()">-->
+<!--                  {% csrf_token %}-->
+<!--                  <input type="hidden" value="{{i.id}}" />-->
+<!--                  <button class="btn btn-danger">Reject</button>-->
+<!--                </form>-->
+<!--                {% elif i.status == 1 %}-->
+<!--                <button type="button" class="btn btn-success">Approval Confirmed</button>-->
+<!--                {% else %}-->
+<!--                <button type="button" class="btn btn-danger">Approval rejected</button>-->
+<!--                {% endif %}-->
+<!--              </td>-->
+
+<!--            </tr>-->
+<!--          {% endfor %}-->
+
+<!--          </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</div>-->
+
+{% endblock %}

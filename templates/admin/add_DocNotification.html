@@ -1,0 +1,29 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="card">
+    <div class="header bg-red">
+
+        <h2 class="text-center">
+            ADD NOTIFICATION FOR DOCTORS
+        </h2>
+
+    </div>
+    <div class="body">
+
+        <form method="post" class="text-center" style="width:950px;margin-left:85px;">
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br><br>
+        </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'admin/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="card">
+    <div class="header bg-red">
+
+        <h2 class="text-center">
+            REPLY TO FEEDBACK
+        </h2>
+
+    </div>
+    <div class="body">
+
+       <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-control-label" >Name</label>
+        <input type="text" class="form-control" required readonly value="{{data.user}}">
+      </div>
+      <div class="mb-3">
+        <label class="form-control-label" >Feedback</label>
+        <input type="text" class="form-control" required readonly value="{{data.feedback}}">
+      </div>
+      <div class="mb-3">
+        <label class="form-control-label" >Reply</label>
+        <textarea type="text" class="form-control" required name="reply" rows="3"></textarea>
+      </div><br>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

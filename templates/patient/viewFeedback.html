@@ -1,0 +1,46 @@
+{% extends 'patient/dash.html' %}
+{% block content %}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header bg-red">
+                <h2 class="text-center">
+                    FEEDBACKS
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>SL.NO</th>
+                        <th>DATE</th>
+                        <th>FEEDBACKS</th>
+                        <th>RESPONSE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%  for i in data %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{i.date}}</td>
+                        <td>{{i.feedback}}</td>
+<!--                        <td>{{i.reply}}</td>-->
+                        <td>
+                            {% if i.reply == None %}
+                            <p style="color:green">No Reply Yet...</p>
+                            {% else %}
+                            {{i.reply}}
+                            {% endif %}
+                        </td>
+                    </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

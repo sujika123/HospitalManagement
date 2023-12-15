@@ -1,0 +1,22 @@
+{% extends 'patient/dash.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h2 class="text-center">OUR DEPARTMENTS</h2><hr><br>
+<div class="container text-center">
+  {% for i in data %}
+
+  <div class="card text-center mx-2 shadow my-2" style="width: 18rem;display:inline-block;overflow:auto;width:300px;height:400px;">
+    <div class="card-body">
+      <h2 class="card-title text-dark" style="color:blue;font-size:25px;">{{i.dept_name}}</h2>
+      <br>
+      <p style="margin-left:20px;margin-right:20px;font-size:20px;">{{i.dept_desc}}</p>
+
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
+

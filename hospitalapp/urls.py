@@ -8,7 +8,7 @@ urlpatterns = [
     path('doctor_registration', views.doctor_registration, name='doctor_registration'),
     path('patient_registration', views.patient_registration, name='patient_registration'),
     path('login_view', views.login_view, name='login_view'),
-
+    path('logout_view', views.logout_view, name='logout_view'),
 
 
 # ADMIN URLS

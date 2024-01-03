@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 
 from hospitalapp.forms import loginform, doctorlogin, patientlogin
@@ -90,3 +90,7 @@ def login_view(request):
             messages.info(request, 'invalid Credentials')
     return render(request, 'sign-in.html')
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')

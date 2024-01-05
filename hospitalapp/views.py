@@ -13,15 +13,6 @@ def index(request):
     data = doctor.objects.filter(status=True)
     return render(request, 'index.html',{'data':data})
 
-def dash(request):
-    return render(request, "admin/dash.html")
-
-def loginview(request):
-    return render(request, "sign-in.html")
-
-def register(request):
-    return render(request, "sign-up.html")
-
 
 def doctor_registration(request):
     form1 = loginform()

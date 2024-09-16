@@ -29,7 +29,7 @@
                         <td>{{i.aadhar_number}}</td>
                         <td>{{i.email}}</td>
                         <td><a href="{% url 'updatepatient' i.id %}"> <button type="button" class="btn btn-primary">UPDATE</button></a></td>
-                        <td><a href="{% url 'doctor_delete' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
+                        <td><a href="{% url 'delete_patient' i.id %}"> <button type="button" class="btn btn-danger">DELETE</button></a></td>
                     </tr>
 
                     {% endfor %}

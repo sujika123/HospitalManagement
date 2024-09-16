@@ -104,6 +104,7 @@ def AddFeedback(request):
 
 @login_required(login_url='login_view')
 def view_feedback(request):
-    data = Feedback.objects.all()
+    u = request.user
+    data = Feedback.objects.filter(user=u)
     return render(request, 'patient/viewFeedback.html', {'data': data})
 
